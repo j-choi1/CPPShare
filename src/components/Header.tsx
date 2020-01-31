@@ -30,7 +30,7 @@ const Header: React.FC = () => {
                                         className={classes.logo}
                                         alt="logo"
                                     />
-                                </Link >
+                                </Link>
                             </Grid>
 
                             <Grid item xs={6}>

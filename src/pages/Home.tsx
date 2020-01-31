@@ -1,5 +1,14 @@
 import React, { Fragment } from 'react';
-import { Card, Grid, makeStyles, FormControl, InputLabel, Select, MenuItem, FormHelperText, CardContent } from '@material-ui/core';
+import {
+    Card,
+    Grid,
+    makeStyles,
+    FormControl,
+    InputLabel,
+    NativeSelect,
+    FormHelperText,
+    CardContent
+} from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
     grid: {
@@ -20,39 +29,53 @@ const Home: React.FC = () => {
 
     const [course, setCourse] = React.useState('');
 
-    const handleChange = (event: React.ChangeEvent<{ value: any }>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setCourse(event.target.value);
     };
 
     return (
         <Fragment>
-            <Grid container spacing={3} className={classes.grid} justify="center">
+            <Grid
+                container
+                spacing={3}
+                className={classes.grid}
+                justify="center"
+            >
                 <Grid item xs={12} sm={6} className={classes.gridItem}>
                     <FormControl fullWidth>
                         <InputLabel id="course-label">Course</InputLabel>
-                        <Select
-                            labelId="course-label"
-                            id="course"
-                            value={course}
-                            onChange={handleChange}
-                        >
-                            <MenuItem value={'Some Item'}>Some Items</MenuItem>
-                        </Select>
+                        <NativeSelect value={course} onChange={handleChange}>
+                            <option value={'Some Item'}>Some Item</option>
+                            <option value={'Some Item'}>Some Item</option>
+                            <option value={'Some Item'}>Some Item</option>
+                            <option value={'Some Item'}>Some Item</option>
+                            <option value={'Some Item'}>Some Item</option>
+                            <option value={'Some Item'}>Some Item</option>
+                            <option value={'Some Item'}>Some Item</option>
+                            <option value={'Some Item'}>Some Item</option>
+                        </NativeSelect>
                         <FormHelperText>Please select a course.</FormHelperText>
                     </FormControl>
                 </Grid>
             </Grid>
 
-            <Grid container spacing={3} className={classes.grid} justify="center">
+            <Grid
+                container
+                spacing={3}
+                className={classes.grid}
+                justify="center"
+            >
                 <Grid item xs={12} sm={6} className={classes.gridItem}>
-                    <Card variant="outlined" >
+                    <Card variant="outlined">
                         <CardContent>
-                            <p><strong>Date Submitted:</strong> test</p>
+                            <p>
+                                <strong>Date Submitted:</strong> test
+                            </p>
                         </CardContent>
                     </Card>
                 </Grid>
             </Grid>
-        </Fragment >
+        </Fragment>
     );
 };
 
