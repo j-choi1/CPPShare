@@ -8,6 +8,7 @@ import Submit from '../pages/Submit';
 
 const useStyles = makeStyles({
     logo: {
+        width: '100%',
         maxWidth: 600
     }
 });
@@ -23,11 +24,13 @@ const Header: React.FC = () => {
                     <Fragment>
                         <Grid container spacing={3} justify="center">
                             <Grid item xs={12} style={{ textAlign: 'center' }}>
-                                <Image
-                                    src={Logo}
-                                    className={classes.logo}
-                                    alt="logo"
-                                />
+                                <Link to="/">
+                                    <Image
+                                        src={Logo}
+                                        className={classes.logo}
+                                        alt="logo"
+                                    />
+                                </Link >
                             </Grid>
 
                             <Grid item xs={6}>
