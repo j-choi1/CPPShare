@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Paper, Tabs, Tab, makeStyles, Grid } from '@material-ui/core';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Image from './Image';
 import Logo from '../assets/logo.png';
+import Home from '../pages/Home';
+import Submit from '../pages/Submit';
 
 const useStyles = makeStyles({
     logo: {
@@ -12,34 +15,55 @@ const useStyles = makeStyles({
 const Header: React.FC = () => {
     const classes = useStyles();
 
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: any) => {
-        setValue(newValue);
-    };
-
     return (
-        <Grid container spacing={3} justify="center">
-            <Grid item xs={12} style={{ textAlign: 'center' }}>
-                <Image src={Logo} className={classes.logo} alt="logo" />
-            </Grid>
+        <Router>
+            <Route
+                path="/"
+                render={({ location }) => (
+                    <Fragment>
+                        <Grid container spacing={3} justify="center">
+                            <Grid item xs={12} style={{ textAlign: 'center' }}>
+                                <Image
+                                    src={Logo}
+                                    className={classes.logo}
+                                    alt="logo"
+                                />
+                            </Grid>
 
-            <Grid item xs={6}>
-                <Paper variant="outlined">
-                    <Tabs
-                        value={value}
-                        onChange={handleChange}
-                        indicatorColor="primary"
-                        textColor="primary"
-                        variant="fullWidth"
-                        centered
-                    >
-                        <Tab label="Home" />
-                        <Tab label="Submit Textbook" />
-                    </Tabs>
-                </Paper>
-            </Grid>
-        </Grid>
+                            <Grid item xs={6}>
+                                <Paper variant="outlined">
+                                    <Tabs
+                                        value={location.pathname}
+                                        indicatorColor="primary"
+                                        textColor="primary"
+                                        variant="fullWidth"
+                                        centered
+                                    >
+                                        <Tab
+                                            label="Home"
+                                            component={Link}
+                                            value="/"
+                                            to="/"
+                                        />
+                                        <Tab
+                                            label="Submit Textbook"
+                                            component={Link}
+                                            value="/submit"
+                                            to="/submit"
+                                        />
+                                    </Tabs>
+                                </Paper>
+                            </Grid>
+                        </Grid>
+
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/submit" component={Submit} />
+                        </Switch>
+                    </Fragment>
+                )}
+            />
+        </Router>
     );
 };
 
