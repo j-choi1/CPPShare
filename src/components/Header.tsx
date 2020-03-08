@@ -6,12 +6,16 @@ import Logo from '../assets/logo.png';
 import Home from '../pages/Home';
 import Submit from '../pages/Submit';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     logo: {
         width: '100%',
         maxWidth: 600
+    },
+    gridItem: {
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(4)
     }
-});
+}));
 
 const Header: React.FC = () => {
     const classes = useStyles();
@@ -22,8 +26,8 @@ const Header: React.FC = () => {
                 path="/"
                 render={({ location }) => (
                     <Fragment>
-                        <Grid container spacing={3} justify="center">
-                            <Grid item xs={12} style={{ textAlign: 'center' }}>
+                        <Grid container justify="center">
+                            <Grid item md={12} style={{ textAlign: 'center' }} className={classes.gridItem}>
                                 <Link to="/">
                                     <Image
                                         src={Logo}
@@ -33,7 +37,7 @@ const Header: React.FC = () => {
                                 </Link>
                             </Grid>
 
-                            <Grid item xs={6}>
+                            <Grid item md={6} className={classes.gridItem}>
                                 <Paper variant="outlined">
                                     <Tabs
                                         value={location.pathname}
