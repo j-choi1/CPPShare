@@ -24,19 +24,27 @@ app.get('/courses', async (req, res) => {
 });
 
 app.get('/courses/:courseID/files', async (req, res) => {
-    const files = await knex('files').where({ course_id: req.params.courseID }).orderBy('upload_date', 'desc');
+    const files = await knex('files')
+        .where({ course_id: req.params.courseID })
+        .orderBy('upload_date', 'desc');
 
     res.json(files);
 });
 
 app.get('/files/:fileID/download', async (req, res) => {
-    const file = await knex('files').where({ course_id: req.params.fileID }).first();
+    const file = await knex('files')
+        .where({ course_id: req.params.fileID })
+        .first();
 
     res.download(`${__dirname}/../uploads/${file.filename}.pdf`);
 });
 
-app.post('/upload', upload.single('pdf'), async (req, res) => {
-    await renameFile(`uploads/${req.file.filename}`, `uploads/${req.file.filename}.pdf`);
+app.post('/upload', upload.single('file'), async (req, res) => {
+    await renameFile(
+        `uploads/${req.file.filename}`,
+        `uploads/${req.file.filename}.pdf`
+    );
+
     await knex('files').insert({
         course_id: req.body.course,
         comment: req.body.comment || '',

@@ -10,7 +10,7 @@ import {
     FormHelperText,
     MenuItem,
     CardContent,
-    Hidden
+    Hidden,
 } from '@material-ui/core';
 import moment from 'moment';
 
@@ -56,73 +56,117 @@ const Home: React.FC = () => {
         const getCourses = async () => {
             const data = await (await fetch('/courses')).json();
             setCourses(data);
-        }
+        };
 
         getCourses();
     }, []);
 
     return (
         <Fragment>
-            <Grid
-                container
-                className={classes.grid}
-                justify="center"
-            >
+            <Grid container className={classes.grid} justify="center">
                 <Grid item md={6}>
                     <FormControl fullWidth>
-                        <InputLabel shrink id="course-label">Course</InputLabel>
+                        <InputLabel shrink id="course-label">
+                            Course
+                        </InputLabel>
                         <Select value={selectedCourse} onChange={handleChange}>
-                            {courses.map((course: { id: number, name: string }) => {
-                                return <MenuItem key={course.id} value={course.id}>{course.name}</MenuItem>
-                            })}
+                            {courses.map(
+                                (course: { id: number; name: string }) => {
+                                    return (
+                                        <MenuItem
+                                            key={course.id}
+                                            value={course.id}
+                                        >
+                                            {course.name}
+                                        </MenuItem>
+                                    );
+                                }
+                            )}
                         </Select>
                         <FormHelperText>Please select a course.</FormHelperText>
                     </FormControl>
                 </Grid>
             </Grid>
 
-            <Grid
-                container
-                className={classes.grid}
-                justify="center"
-            >
-
-                {selectedCourse && files.length === 0 &&
+            <Grid container className={classes.grid} justify="center">
+                {selectedCourse && files.length === 0 && (
                     <Grid item md={6} className={classes.gridItem}>
                         <Card variant="outlined" className={classes.card}>
                             <CardContent>
                                 <p>
-                                    No textbooks found for <strong>{selectedCourseName.current}</strong>.
+                                    No textbooks found for{' '}
+                                    <strong>
+                                        {selectedCourseName.current}
+                                    </strong>
+                                    .
                                 </p>
                             </CardContent>
                         </Card>
                     </Grid>
-                }
+                )}
 
-                {selectedCourse && files.length > 0 &&
+                {selectedCourse && files.length > 0 && (
                     <Fragment>
-                        {files.map((file: { id: number, filename: string, comment: string, upload_date: string }) => {
-                            return (
-                                <Fragment>
-                                    <Grid item md={6} className={classes.gridItem}>
-                                        <Card variant="outlined" className={classes.card}>
-                                            <CardContent>
-                                                <p><strong>Date Submitted</strong>: {moment(file.upload_date).format('MM/DD/YYYY')}</p>
-                                                <p><strong>Comment</strong>: {file.comment}</p>
+                        {files.map(
+                            (file: {
+                                id: number;
+                                filename: string;
+                                comment: string;
+                                upload_date: string;
+                            }) => {
+                                return (
+                                    <Fragment>
+                                        <Grid
+                                            item
+                                            md={6}
+                                            className={classes.gridItem}
+                                        >
+                                            <Card
+                                                variant="outlined"
+                                                className={classes.card}
+                                            >
+                                                <CardContent>
+                                                    <p>
+                                                        <strong>
+                                                            Date Submitted
+                                                        </strong>
+                                                        :{' '}
+                                                        {moment(
+                                                            file.upload_date
+                                                        ).format('MM/DD/YYYY')}
+                                                    </p>
+                                                    <p>
+                                                        <strong>Comment</strong>
+                                                        : {file.comment}
+                                                    </p>
 
-                                                <Button variant="outlined" color="primary" href={`http://localhost:4000/files/${file.id}/download`} className={classes.button}>
-                                                    Download Textbook
-                                                </Button>
-                                            </CardContent>
-                                        </Card>
-                                    </Grid>
+                                                    <Button
+                                                        variant="outlined"
+                                                        color="primary"
+                                                        href={`http://localhost:4000/files/${file.id}/download`}
+                                                        className={
+                                                            classes.button
+                                                        }
+                                                    >
+                                                        Download Textbook
+                                                    </Button>
+                                                </CardContent>
+                                            </Card>
+                                        </Grid>
 
-                                    <Grid item md={12} implementation="css" smDown component={Hidden} />
-                                </Fragment>
-                            );
-                        })}
+                                        <Grid
+                                            item
+                                            md={12}
+                                            implementation="css"
+                                            smDown
+                                            component={Hidden}
+                                        />
+                                    </Fragment>
+                                );
+                            }
+                        )}
                     </Fragment>
-                }
+                )}
             </Grid>
         </Fragment>
     );

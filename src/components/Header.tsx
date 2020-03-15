@@ -27,7 +27,12 @@ const Header: React.FC = () => {
                 render={({ location }) => (
                     <Fragment>
                         <Grid container justify="center">
-                            <Grid item md={12} style={{ textAlign: 'center' }} className={classes.gridItem}>
+                            <Grid
+                                item
+                                md={12}
+                                style={{ textAlign: 'center' }}
+                                className={classes.gridItem}
+                            >
                                 <Link to="/">
                                     <Image
                                         src={Logo}
