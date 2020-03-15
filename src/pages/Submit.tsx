@@ -55,7 +55,7 @@ const Submit: React.FC = () => {
 
     const handleCommentChange = (event: React.ChangeEvent<any>) => {
         setComment(event.target.value);
-    }
+    };
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -68,15 +68,21 @@ const Submit: React.FC = () => {
         const res = await axios.post('/upload', formData);
 
         if (res.data.status === 'success') {
-            setAlert({ type: 'success', message: 'Textbook has been submitted!' });
+            setAlert({
+                type: 'success',
+                message: 'Textbook has been submitted!'
+            });
         } else {
-            setAlert({ type: 'error', message: 'Error! Something went wrong.' });
+            setAlert({
+                type: 'error',
+                message: 'Error! Something went wrong.'
+            });
         }
 
         setSelectedCourse('');
         setFile(new File([''], ''));
         setComment('');
-    }
+    };
 
     useEffect(() => {
         const getCourses = async () => {
@@ -91,19 +97,23 @@ const Submit: React.FC = () => {
         <Grid container className={classes.grid} justify="center">
             <Grid item md={6}>
                 <Paper variant="outlined" className={classes.paper}>
-                    {alert.type === 'success' &&
-                        <Alert severity='success' className={classes.alert}>{alert.message}</Alert>
-                    }
+                    {alert.type === 'success' && (
+                        <Alert severity="success" className={classes.alert}>
+                            {alert.message}
+                        </Alert>
+                    )}
 
-                    {alert.type === 'error' &&
-                        <Alert severity='error' className={classes.alert}>{alert.message}</Alert>
-                    }
+                    {alert.type === 'error' && (
+                        <Alert severity="error" className={classes.alert}>
+                            {alert.message}
+                        </Alert>
+                    )}
 
                     <form onSubmit={handleSubmit}>
                         <FormControl fullWidth>
                             <InputLabel shrink id="course-label">
                                 Course
-                        </InputLabel>
+                            </InputLabel>
                             <Select
                                 value={selectedCourse}
                                 onChange={handleCourseChange}
@@ -121,7 +131,9 @@ const Submit: React.FC = () => {
                                     }
                                 )}
                             </Select>
-                            <FormHelperText>Please select a course.</FormHelperText>
+                            <FormHelperText>
+                                Please select a course.
+                            </FormHelperText>
                         </FormControl>
 
                         <TextField

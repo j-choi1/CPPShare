@@ -10,7 +10,7 @@ import {
     FormHelperText,
     MenuItem,
     CardContent,
-    Hidden,
+    Hidden
 } from '@material-ui/core';
 import moment from 'moment';
 
