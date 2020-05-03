@@ -151,6 +151,7 @@ const Submit: React.FC = () => {
                             label="Comments (Optional)"
                             className={classes.textField}
                             onChange={handleCommentChange}
+                            value={comment}
                         />
 
                         <Grid container spacing={2}>
