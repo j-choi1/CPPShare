@@ -49,16 +49,16 @@ Creates Docker containers for MySQL service. Upon initialization, the database w
 
 ## Screenshots
 
-![Screen1](https://i.imgur.com/rXUl9EP.png)
+![Screen1](https://i.imgur.com/JjhJZal.png)
 
 ---
 
-![Screen2](https://i.imgur.com/D1dJx4G.png)
+![Screen2](https://i.imgur.com/swMy2Zd.png)
 
 ---
 
-![Screen3](https://i.imgur.com/3Rpg0Ut.png)
+![Screen3](https://i.imgur.com/j0fmK1K.png)
 
 ---
 
-![Screen4](https://i.imgur.com/OXLyMND.png)
+![Screen4](https://i.imgur.com/x2vDdJX.png)
