@@ -14,6 +14,9 @@ The database is used to store the list of courses and metadata of files. All fil
 
 The entire project is developed using [TypeScript](https://www.typescriptlang.org/).
 
+## Database Configuration
+
+The `.env` file in the base directory contains the MySQL credentials. The default credentials are set according to the environment set om `docker-compose.yml`.
 
 ## Available Scripts
 
