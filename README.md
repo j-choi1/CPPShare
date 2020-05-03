@@ -60,7 +60,7 @@ Creates Docker containers for MySQL service. Upon initialization, the database w
 
 ---
 
-![Screen3](https://i.imgur.com/j0fmK1K.png)
+![Screen3](https://i.imgur.com/spppEED.png)
 
 ---
 
