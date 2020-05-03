@@ -1,44 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CPPShare
+
+CPPShare is a website where Cal Poly Pomona students can share and download textbooks for their classes in PDF format. The project comes prefilled with only CS courses but more courses can be added. 
+
+The database is used to store the list of courses and metadata of files. All files are stored in the `uploads` folder with a random filename.
+
+### Frontend
+* [React](https://reactjs.org/)
+* [Material-UI](https://material-ui.com/)
+
+### Backend
+* [Express](https://expressjs.com/)
+* [MySQL](https://www.npmjs.com/package/mysql2) using [Docker](https://www.docker.com/)
+
+The entire project is developed using [TypeScript](https://www.typescriptlang.org/).
+
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+`docker-compose up -d`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Creates Docker containers for MySQL service. Upon initialization, the database will execute SQL files in the `dbscripts` folder to initialize database tables and data. You can access phpMyAdmin, an administration tool for MySQL, at http://localhost/phpmyadmin.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Development
 
-### `npm test`
+* `npm run start-server`
+  
+  Starts the Express server under port 4000.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* `npm run start-react`
 
-### `npm run build`
+  Starts the React app under port 3000. Open http://localhost:3000 to view it in the browser.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Production
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* `npm run build-server`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  Compiles the TypeScript files in the `server` folder to plain JavaScript. Outputs to the `dist` folder.
 
-### `npm run eject`
+* `npm run build-react`
+  
+  Builds the React app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* `npm start`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+  Runs both `npm run build-server` and `npm run build-react` scripts and will start Express server. Express will serve the static files in the `build` folder created from React.

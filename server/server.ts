@@ -3,8 +3,9 @@ import app from './app';
 import multer from 'multer';
 import fs from 'fs';
 import util from 'util';
+import path from 'path';
 
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 const renameFile = util.promisify(fs.rename);
 
 const upload = multer({
@@ -13,8 +14,12 @@ const upload = multer({
         cb(null, file.mimetype === 'application/pdf');
     },
     limits: {
-        files: 1
-    }
+        files: 1,
+    },
+});
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 app.get('/courses', async (req, res) => {
@@ -48,7 +53,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     await knex('files').insert({
         course_id: req.body.course,
         comment: req.body.comment || '',
-        filename: req.file.filename
+        filename: req.file.filename,
     });
 
     res.json({ status: 'success' });

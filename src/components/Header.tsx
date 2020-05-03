@@ -6,15 +6,15 @@ import Logo from '../assets/logo.png';
 import Home from '../pages/Home';
 import Submit from '../pages/Submit';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     logo: {
         width: '100%',
-        maxWidth: 600
+        maxWidth: 600,
     },
     gridItem: {
         marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(4)
-    }
+        marginBottom: theme.spacing(4),
+    },
 }));
 
 const Header: React.FC = () => {

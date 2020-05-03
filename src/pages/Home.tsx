@@ -10,28 +10,28 @@ import {
     FormHelperText,
     MenuItem,
     CardContent,
-    Hidden
+    Hidden,
 } from '@material-ui/core';
 import moment from 'moment';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     grid: {
         marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(4)
+        marginBottom: theme.spacing(4),
     },
     gridItem: {
-        textAlign: 'center'
+        textAlign: 'center',
     },
     card: {
-        marginTop: theme.spacing(2)
+        marginTop: theme.spacing(2),
     },
     divider: {
         marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
     },
     button: {
-        marginRight: theme.spacing(1)
-    }
+        marginRight: theme.spacing(1),
+    },
 }));
 
 const Home: React.FC = () => {

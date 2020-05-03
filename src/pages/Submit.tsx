@@ -9,31 +9,31 @@ import {
     FormHelperText,
     MenuItem,
     Paper,
-    TextField
+    TextField,
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import axios from 'axios';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     grid: {
         marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(4)
+        marginBottom: theme.spacing(4),
     },
     paper: {
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
     },
     input: {
-        display: 'none'
+        display: 'none',
     },
     button: {
-        marginTop: theme.spacing(3)
+        marginTop: theme.spacing(3),
     },
     textField: {
-        marginTop: theme.spacing(2)
+        marginTop: theme.spacing(2),
     },
     alert: {
-        marginBottom: theme.spacing(2)
-    }
+        marginBottom: theme.spacing(2),
+    },
 }));
 
 const Submit: React.FC = () => {
@@ -70,12 +70,12 @@ const Submit: React.FC = () => {
         if (res.data.status === 'success') {
             setAlert({
                 type: 'success',
-                message: 'Textbook has been submitted!'
+                message: 'Textbook has been submitted!',
             });
         } else {
             setAlert({
                 type: 'error',
-                message: 'Error! Something went wrong.'
+                message: 'Error! Something went wrong.',
             });
         }
 
@@ -141,7 +141,7 @@ const Submit: React.FC = () => {
                             label="File"
                             value={file.name}
                             InputProps={{
-                                readOnly: true
+                                readOnly: true,
                             }}
                             className={classes.textField}
                         />
