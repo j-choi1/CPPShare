@@ -46,3 +46,13 @@ Creates Docker containers for MySQL service. Upon initialization, the database w
 * `npm start`
 
   Runs both `npm run build-server` and `npm run build-react` scripts and will start Express server. Express will serve the static files in the `build` folder created from React.
+
+## Screenshots
+
+![Screen1](https://i.imgur.com/rXUl9EP.png)
+
+![Screen2](https://i.imgur.com/D1dJx4G.png)
+
+![Screen3](https://i.imgur.com/3Rpg0Ut.png)
+
+![Screen4](https://i.imgur.com/OXLyMND.png)
